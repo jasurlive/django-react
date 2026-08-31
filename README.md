@@ -24,5 +24,11 @@ pip install -r middle.txt
 python manage.py runserver 1111 (any port you want)
 ```
 
+if user sample data is needed:
+run seeder:
+```
+python manage.py seed
+```
+
 ### LICENSE:
 MIT
