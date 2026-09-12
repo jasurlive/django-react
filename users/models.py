@@ -7,7 +7,7 @@ class Users(models.Model):
     password = models.CharField(max_length=4)
     firstname = models.CharField(max_length=15)
     surname = models.CharField(max_length=15)
-    age = models.IntegerField(max_length=3)
+    age = models.IntegerField()
     is_manager = models.BooleanField(default=False)
 
     def __str__(self):
