@@ -20,8 +20,9 @@ export default function Home() {
         <ul className="home-list">
           {users.map((user) => (
             <li key={user.id} className="home-item">
-              <span className="home-name">{user.name}</span>
-              <span className="home-email">{user.email}</span>
+              <span className="home-name">
+                {user.firstname} {user.surname}
+              </span>
               <span className="home-email">{user.username}</span>
             </li>
           ))}

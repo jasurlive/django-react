@@ -3,9 +3,11 @@ import { api } from '../../lib/api'
 
 export type User = {
   id: number
-  name: string
-  email: string
   username: string
+  firstname: string
+  surname: string
+  age: number
+  is_manager: boolean
 }
 
 export function useGetUsers() {
@@ -17,7 +19,7 @@ export function useGetUsers() {
     const controller = new AbortController()
 
     api
-      .get<User[]>('/users', { signal: controller.signal })
+      .get<User[]>('/users/', { signal: controller.signal })
       .then(setUsers)
       .catch((err: Error) => {
         if (err.name !== 'AbortError') setError(err.message)

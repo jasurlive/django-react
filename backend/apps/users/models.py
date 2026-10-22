@@ -1,10 +1,9 @@
 from django.db import models
 
-# Create your models here.
 
 class Users(models.Model):
-    username = models.CharField(max_length=15)
-    password = models.CharField(max_length=4)
+    username = models.CharField(max_length=15, unique=True)
+    password = models.CharField(max_length=128)  # stores a hash, never plain text
     firstname = models.CharField(max_length=15)
     surname = models.CharField(max_length=15)
     age = models.IntegerField()
@@ -12,4 +11,3 @@ class Users(models.Model):
 
     def __str__(self):
         return self.username
- 

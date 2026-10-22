@@ -1,11 +1,8 @@
 import { useState } from 'react'
 import { api } from '../../lib/api'
+import type { User } from '../GET/useGetUsers'
 
-export type RegisterBody = {
-  name: string
-  email: string
-  password: string
-}
+export type RegisterBody = Omit<User, 'id' | 'is_manager'> & { password: string }
 
 export function usePostRegister() {
   const [loading, setLoading] = useState(false)
@@ -16,7 +13,7 @@ export function usePostRegister() {
     setError(null)
 
     try {
-      return await api.post('/register', body)
+      return await api.post<User>('/users/', body)
     } catch (err) {
       setError((err as Error).message)
       return null
