@@ -1,0 +1,43 @@
+# Environment variables and virtual environments
+.env
+.venv/
+venv/
+env/
+
+# Python / Django
+__pycache__/
+*.py[cod]
+*$py.class
+db.sqlite3
+db.sqlite3-journal
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+
+htmlcov/
+
+# Django generated files
+staticfiles/
+media/
+
+# React / Node / Vite
+node_modules/
+dist/
+.vite/
+coverage/
+.npm/
+
+# Build and tool caches
+.cache/
+.tmp/
+temp/
+
+# Editors and operating system
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
