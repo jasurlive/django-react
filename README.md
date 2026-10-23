@@ -1,18 +1,19 @@
 # django-react
 
+Ready to build Fullstack Template
 Django REST backend + React/Vite frontend.
 
 ```
-backend/            Django project
+back/            Django project
   config/           settings, root urls
   apps/<name>/      one folder per Django app
-frontend/           React + TypeScript + Vite
+front/           React + TypeScript + Vite
 ```
 
 ## Backend
 
 ```bash
-cd backend
+cd back
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 cp .env.example .env                                 # set SECRET_KEY
@@ -26,7 +27,7 @@ API: `/api/users/` · Admin: `/admin/`
 ## Frontend
 
 ```bash
-cd frontend
+cd front
 npm install
 cp .env.example .env
 npm run dev                                          # http://localhost:1212
@@ -35,7 +36,7 @@ npm run dev                                          # http://localhost:1212
 ## Add a Django app
 
 ```bash
-cd backend
+cd back
 mkdir apps/blog && python manage.py startapp blog apps/blog
 ```
 
