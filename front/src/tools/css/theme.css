@@ -1,0 +1,37 @@
+/* ---------- theme tokens ---------- */
+/* blue palette, set via <html data-theme="light|dark"> (see useTheme + index.html) */
+
+:root,
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #eef2f7;
+  --bg-elev: #ffffff;
+  --surface: #f3f6fb;
+  --text: #1f2937;
+  --text-strong: #0f172a;
+  --muted: #5b6475;
+  --border: rgba(15, 23, 42, 0.12);
+  --hover: rgba(15, 23, 42, 0.05);
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-soft: rgba(37, 99, 235, 0.1);
+  --danger: #dc2626;
+  --shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #080e1a;
+  --bg-elev: #0d1526;
+  --surface: #1a1e3c;
+  --text: #d1d5db;
+  --text-strong: #f1f5f9;
+  --muted: #9ca3af;
+  --border: rgba(255, 255, 255, 0.1);
+  --hover: rgba(255, 255, 255, 0.07);
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --accent-soft: rgba(59, 130, 246, 0.14);
+  --danger: #f87171;
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}

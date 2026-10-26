@@ -42,28 +42,3 @@ h1, h2, h3, h4, p { overflow-wrap: break-word; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
-
-/* ---------- theme toggle ---------- */
-/* set via <html data-theme="light|dark"> (see useTheme + index.html) */
-
-:root {
-  color-scheme: light;
-  --bg: #f5f6f3;
-  --surface: #ffffff;
-  --text: #1c1f1d;
-  --muted: #6b716d;
-  --border: #dde0db;
-  --accent: #2f6f5e;
-  --danger: #b4412f;
-}
-
-:root[data-theme='dark'] {
-  color-scheme: dark;
-  --bg: #151816;
-  --surface: #1d211f;
-  --text: #e8ebe7;
-  --muted: #959c97;
-  --border: #2c312e;
-  --accent: #7cc4ad;
-  --danger: #ec8a77;
-}

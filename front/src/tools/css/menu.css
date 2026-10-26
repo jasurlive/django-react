@@ -22,9 +22,10 @@
   z-index: 10;
   display: flex;
   overflow: hidden;
-  background: Canvas;
-  color: CanvasText;
-  border: 0 solid color-mix(in srgb, currentColor 15%, transparent);
+  background: var(--bg-elev);
+  color: var(--text);
+  border: 0 solid var(--border);
+  box-shadow: var(--shadow);
 }
 
 .menu-item,
@@ -48,12 +49,13 @@
 
 .menu-item:hover,
 .menu-toggle:hover {
-  background: color-mix(in srgb, currentColor 10%, transparent);
+  background: var(--hover);
+  color: var(--text-strong);
 }
 
 .menu-item.active {
   color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  background: var(--accent-soft);
   box-shadow: inset 3px 0 var(--accent);
 }
 
@@ -128,31 +130,3 @@
     display: none;
   }
 }
-
-/* ---- demo backgrounds: delete this block in real projects ---- */
-.menu-page {
-  background-image: repeating-linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--accent) 12%, transparent) 0 2px,
-    transparent 2px 14px
-  );
-}
-
-.menu-page::after {
-  content: "main page";
-  position: absolute;
-  right: 12px;
-  bottom: 8px;
-  font-size: 12px;
-  color: var(--muted);
-  pointer-events: none;
-}
-
-.menu {
-  background-image: repeating-linear-gradient(
-    45deg,
-    color-mix(in srgb, var(--danger) 14%, transparent) 0 2px,
-    transparent 2px 14px
-  );
-}
-/* ---- end demo ---- */

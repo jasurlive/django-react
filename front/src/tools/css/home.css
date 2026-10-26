@@ -16,6 +16,7 @@
 .home-title {
   font-size: 1.25rem;
   font-weight: 600;
+  color: var(--text-strong);
 }
 
 .home-toggle {
@@ -24,10 +25,12 @@
   border-radius: 6px;
   background: var(--surface);
   font-size: 0.875rem;
+  transition: border-color 0.15s, color 0.15s;
 }
 
 .home-toggle:hover {
   border-color: var(--accent);
+  color: var(--accent);
 }
 
 .home-content {
