@@ -1,4 +1,5 @@
 # Telegram Bot
+<img src="https://github.com/user-attachments/assets/d9e40660-97da-444a-a5cf-136db03b84da" width="500" height="auto">
 
 Simple & minimal Telegram bot template using Python, polling, and JSONPlaceholder API.
 
@@ -47,6 +48,36 @@ python bot.py
 ## API (you can use your own api calls)
 
 [JSONPlaceholder](https://jsonplaceholder.typicode.com/users)
+
+## setup the bot on linux as service
+
+sudo nano /etc/systemd/system/telegrambot.service (!)
+
+```
+[Unit]
+Description=telegram bot (or any shit name to recognize it later on)
+After=network.target
+
+[Service]
+WorkingDirectory=/home/YOURUSERNAME/bot
+ExecStart=/home/YOURUSERNAME/bot/.venv/bin/python main.py
+
+Restart=always
+Environment="BOT_TOKEN=your_token"
+Restart=always
+Environment="ADMIN_ID=your_id"
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable telegrambot
+sudo systemctl start telegrambot
+```
+
+you'll also need to run these commands if you make any changes
 
 ## License
 
