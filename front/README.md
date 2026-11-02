@@ -4,7 +4,7 @@ No UI kit, no state library. Add only what the project needs.
 
 ```
 src/
-├── ts/                    entry: main.tsx, App.tsx (routes), env.d.ts
+├── app/                    entry: main.tsx, App.tsx (routes), env.d.ts
 └── tools/
     ├── pages/             one file per route
     ├── components/        Layout, Header, ErrorBoundary
@@ -73,7 +73,7 @@ export default function Posts() {
 }
 ```
 
-2. Add the route in `src/ts/App.tsx`
+2. Add the route in `src/app/App.tsx`
 
 ```tsx
 import Posts from '../tools/pages/Posts'
@@ -179,7 +179,7 @@ PUT, PATCH, DELETE: `api.put`, `api.patch`, `api.delete` work the same way (see 
 ## Add an env variable
 
 1. `.env` and `.env.example`: `VITE_MY_VAR=value` (must start with `VITE_`)
-2. `src/ts/env.d.ts`: add `readonly VITE_MY_VAR: string`
+2. `src/app/env.d.ts`: add `readonly VITE_MY_VAR: string`
 3. Use it: `import.meta.env.VITE_MY_VAR`
 
 ## Next steps
