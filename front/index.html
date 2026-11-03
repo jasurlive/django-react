@@ -10,7 +10,7 @@
       try {
         // %VITE_ENABLE_EXTRA_THEMES% is filled in by Vite from front/.env
         var themes = ['light', 'dark']
-        if ('%VITE_ENABLE_EXTRA_THEMES%' !== 'false') themes.push('linen', 'fjord', 'moss')
+        if ('%VITE_ENABLE_EXTRA_THEMES%' !== 'false') themes.push('linen', 'fjord', 'moss', 'charcoal')
         var saved = localStorage.getItem('theme')
         document.documentElement.dataset.theme =
           themes.indexOf(saved) !== -1
