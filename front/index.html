@@ -8,9 +8,14 @@
     <!-- set theme before first paint so dark mode doesn't flash light -->
     <script>
       try {
+        // %VITE_ENABLE_EXTRA_THEMES% is filled in by Vite from front/.env
+        var themes = ['light', 'dark']
+        if ('%VITE_ENABLE_EXTRA_THEMES%' !== 'false') themes.push('linen', 'fjord', 'moss')
+        var saved = localStorage.getItem('theme')
         document.documentElement.dataset.theme =
-          localStorage.getItem('theme') ||
-          (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+          themes.indexOf(saved) !== -1
+            ? saved
+            : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
       } catch {}
     </script>
   </head>

@@ -1,5 +1,5 @@
 /* ---------- theme tokens ---------- */
-/* blue palette, set via <html data-theme="light|dark"> (see useTheme + index.html) */
+/* set via <html data-theme="light|dark|linen|fjord|moss"> (see lib/themes.ts, useTheme + index.html) */
 
 :root,
 :root[data-theme='light'] {
@@ -34,4 +34,79 @@
   --accent-soft: rgba(59, 130, 246, 0.14);
   --danger: #f87171;
   --shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- extra themes: calm scandinavian palettes ---------- */
+/* turn off with VITE_ENABLE_EXTRA_THEMES=false */
+
+/* warm off-white, oak/taupe accent */
+:root[data-theme='linen'] {
+  color-scheme: light;
+  --bg: #f4f1ec;
+  --bg-elev: #fbfaf7;
+  --surface: #ece8e1;
+  --text: #3a3835;
+  --text-strong: #23211f;
+  --muted: #77726a;
+  --border: rgba(58, 56, 53, 0.12);
+  --hover: rgba(58, 56, 53, 0.05);
+  --accent: #7a6a56;
+  --accent-hover: #66584a;
+  --accent-soft: rgba(122, 106, 86, 0.12);
+  --danger: #b4534b;
+  --shadow: 0 6px 20px rgba(58, 56, 53, 0.06);
+}
+
+/* cool misty grey, muted slate-blue accent */
+:root[data-theme='fjord'] {
+  color-scheme: light;
+  --bg: #eef1f3;
+  --bg-elev: #f8fafb;
+  --surface: #e4e9ec;
+  --text: #2f3a42;
+  --text-strong: #1c252c;
+  --muted: #6b7781;
+  --border: rgba(47, 58, 66, 0.12);
+  --hover: rgba(47, 58, 66, 0.05);
+  --accent: #4f6d7a;
+  --accent-hover: #3f5a66;
+  --accent-soft: rgba(79, 109, 122, 0.12);
+  --danger: #b0504a;
+  --shadow: 0 6px 20px rgba(47, 58, 66, 0.06);
+}
+
+/* soft charcoal, sage accent */
+:root[data-theme='moss'] {
+  color-scheme: dark;
+  --bg: #1b1e1c;
+  --bg-elev: #222624;
+  --surface: #2a2f2c;
+  --text: #d4d8d3;
+  --text-strong: #eef0ec;
+  --muted: #949b94;
+  --border: rgba(212, 216, 211, 0.1);
+  --hover: rgba(212, 216, 211, 0.06);
+  --accent: #9fb5a0;
+  --accent-hover: #b5c7b5;
+  --accent-soft: rgba(159, 181, 160, 0.14);
+  --danger: #d98a80;
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* charcoal dark */
+:root[data-theme='charcoal'] {
+  color-scheme: dark;
+  --bg: #181818;
+  --bg-elev: #202020;
+  --surface: #292929;
+  --text: #d4d4d4;
+  --text-strong: #f5f5f5;
+  --muted: #999999;
+  --border: rgba(255, 255, 255, 0.09);
+  --hover: rgba(255, 255, 255, 0.06);
+  --accent: #a3a3a3;
+  --accent-hover: #d4d4d4;
+  --accent-soft: rgba(163, 163, 163, 0.12);
+  --danger: #ef7777;
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }

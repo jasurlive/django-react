@@ -11,12 +11,12 @@ import {
   FiDatabase,
   FiHelpCircle,
   FiShield,
-  FiSun,
-  FiMoon,
 } from "react-icons/fi";
 import "../css/menu.css";
 import { useTheme } from "../hooks/LOCAL/useTheme";
 import { useShortcuts } from "../hooks/LOCAL/useShortcuts";
+import { THEME_ICONS } from "./ThemeIcons";
+import { THEME_LABELS } from "../lib/themes";
 
 export type MenuItem = {
   label: string;
@@ -50,16 +50,27 @@ export default function Menu({
 }: {
   items?: MenuItem[];
 }) {
-  const [collapsed, setCollapsed] = useState(true);
-  const { theme, toggleTheme } = useTheme();
+  const { nextTheme, toggleTheme } = useTheme();
 
   useShortcuts({ "ctrl+j": toggleTheme });
+
+  const [collapsed, setCollapsed] = useState(
+    () => localStorage.getItem("menu-collapsed") !== "false"
+  );
+  
+  const toggleMenu = () => {
+    setCollapsed((value) => {
+      localStorage.setItem("menu-collapsed", String(!value));
+      return !value;
+    });
+  };
 
   const menuItems: MenuItem[] = [
     ...items,
     {
-      label: theme === "dark" ? "Light theme" : "Dark theme",
-      icon: theme === "dark" ? <FiSun /> : <FiMoon />,
+      // shows the theme you'll switch to (ctrl+j cycles too)
+      label: `${THEME_LABELS[nextTheme]} theme`,
+      icon: THEME_ICONS[nextTheme],
       onClick: toggleTheme,
       mobile: true,
     },
@@ -70,7 +81,7 @@ export default function Menu({
       <button
         type="button"
         className="menu-toggle"
-        onClick={() => setCollapsed((value) => !value)}
+        onClick={toggleMenu}
         aria-label="Toggle sidebar"
       >
         {collapsed ? <FiChevronRight /> : <FiChevronLeft />}
