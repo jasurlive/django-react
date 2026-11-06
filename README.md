@@ -1,3 +1,11 @@
+<p align="center">
+  <img
+    src="https://github.com/user-attachments/assets/0b0aba2d-e723-4a27-88c8-137e76af6977"
+    alt="Django React Full-Stack Banner"
+    width="100%"
+  />
+</p>
+
 # django-react
 
 Ready to build Fullstack Template
