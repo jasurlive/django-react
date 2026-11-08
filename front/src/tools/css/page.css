@@ -2,9 +2,7 @@
 
 .page-container {
   width: 100%;
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 2rem 1.25rem;
+  padding: 1.5rem clamp(1rem, 3vw, 2.5rem);
 }
 
 .page-center {
