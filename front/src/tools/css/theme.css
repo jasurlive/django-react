@@ -1,5 +1,5 @@
 /* ---------- theme tokens ---------- */
-/* set via <html data-theme="light|dark|linen|fjord|moss"> (see lib/themes.ts, useTheme + index.html) */
+/* set via <html data-theme="light|dark|linen|fjord|matte|charcoal|paper"> (see lib/themes.ts, useTheme + index.html) */
 
 :root,
 :root[data-theme='light'] {
@@ -75,22 +75,22 @@
   --shadow: 0 6px 20px rgba(47, 58, 66, 0.06);
 }
 
-/* soft charcoal, sage accent */
-:root[data-theme='moss'] {
-  color-scheme: dark;
-  --bg: #1b1e1c;
-  --bg-elev: #222624;
-  --surface: #2a2f2c;
-  --text: #d4d8d3;
-  --text-strong: #eef0ec;
-  --muted: #949b94;
-  --border: rgba(212, 216, 211, 0.1);
-  --hover: rgba(212, 216, 211, 0.06);
-  --accent: #9fb5a0;
-  --accent-hover: #b5c7b5;
-  --accent-soft: rgba(159, 181, 160, 0.14);
-  --danger: #d98a80;
-  --shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+/* matte: soft stone grey, low-glare, muted clay accent */
+:root[data-theme='matte'] {
+  color-scheme: light;
+  --bg: #e8e6e3;
+  --bg-elev: #f0eeeb;
+  --surface: #e1dfdb;
+  --text: #3b3936;
+  --text-strong: #262422;
+  --muted: #75716b;
+  --border: rgba(59, 57, 54, 0.12);
+  --hover: rgba(59, 57, 54, 0.05);
+  --accent: #8a6f5e;
+  --accent-hover: #745c4d;
+  --accent-soft: rgba(138, 111, 94, 0.12);
+  --danger: #b0504a;
+  --shadow: 0 6px 20px rgba(59, 57, 54, 0.05);
 }
 
 /* charcoal dark */
@@ -109,4 +109,22 @@
   --accent-soft: rgba(163, 163, 163, 0.12);
   --danger: #ef7777;
   --shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* paper: monochrome off-white, black ink accent (light twin of charcoal) */
+:root[data-theme='paper'] {
+  color-scheme: light;
+  --bg: #fafafa;
+  --bg-elev: #ffffff;
+  --surface: #f4f4f4;
+  --text: #111111;
+  --text-strong: #000000;
+  --muted: #6b6b6b;
+  --border: #e4e4e4;
+  --hover: rgba(17, 17, 17, 0.05);
+  --accent: #111111;
+  --accent-hover: #333333;
+  --accent-soft: rgba(17, 17, 17, 0.07);
+  --danger: #c0392b;
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
 }

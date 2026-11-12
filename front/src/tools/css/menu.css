@@ -85,6 +85,7 @@
   padding: 0;
 }
 
+/* attached sidebar with a glowing accent bar on desktop */
 @media (min-width: 769px) {
   .with-menu {
     padding-left: var(--menu-w);
@@ -99,6 +100,29 @@
     width: var(--menu-w);
     border-width: 0 1px 0 0;
     transition: width 0.2s;
+  }
+
+  .menu-item {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .menu-item.active {
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    box-shadow: none;
+  }
+
+  /* rounded accent bar with a soft glow */
+  .menu-item.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    bottom: 10px;
+    width: 4px;
+    border-radius: 0 4px 4px 0;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
   }
 }
 
