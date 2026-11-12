@@ -14,7 +14,7 @@ Django REST backend + React/Vite frontend.
 ```
 back/            Django project
   config/           settings, root urls
-  apps/<name>/      one folder per Django app
+  apps/<name>/      one folder per Django app (users, reports, dashboard)
 front/           React + TypeScript + Vite
 ```
 

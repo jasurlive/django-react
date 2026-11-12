@@ -4,17 +4,16 @@ No UI kit, no state library. Add only what the project needs.
 
 ```
 src/
-├── app/                    entry: main.tsx, App.tsx (routes), env.d.ts
-└── tools/
-    ├── pages/             one file per route
-    ├── components/        Layout, Header, ErrorBoundary
-    ├── shared/            Menu (sidebar / mobile bar)
-    ├── hooks/
-    │   ├── GET/           data fetching hooks
-    │   ├── POST/          data sending hooks
-    │   └── LOCAL/         browser-only hooks (theme, shortcuts)
-    ├── lib/api.ts         fetch wrapper (base URL, JSON, errors)
-    └── css/               reset, page, menu, home
+├── app/                entry: main.tsx, App.tsx (routes), env.d.ts
+├── pages/              one file per route
+├── components/         Layout, Header, ErrorBoundary
+├── shared/             Menu (sidebar / mobile bar)
+├── hooks/
+│   ├── GET/            data fetching hooks
+│   ├── POST/           data sending hooks
+│   └── LOCAL/          browser-only hooks (theme, shortcuts)
+├── lib/api.ts          fetch wrapper (base URL, JSON, errors)
+└── css/                reset, page, menu, home
 ```
 
 ## Run
@@ -49,7 +48,7 @@ VITE_API_URL=http://localhost:8000/api
 
 ## Add a page
 
-1. Create `src/tools/pages/Posts.tsx`
+1. Create `src/pages/Posts.tsx`
 
 ```tsx
 import { useGetPosts } from "../hooks/GET/useGetPosts";
@@ -76,12 +75,12 @@ export default function Posts() {
 2. Add the route in `src/app/App.tsx`
 
 ```tsx
-import Posts from '../tools/pages/Posts'
+import Posts from '../pages/Posts'
 ...
 <Route path="posts" element={<Posts />} />
 ```
 
-3. Add the menu item in `src/tools/shared/Menu.tsx` (pick an icon from [react-icons/fi](https://react-icons.github.io/react-icons/icons/fi/))
+3. Add the menu item in `src/shared/Menu.tsx` (pick an icon from [react-icons/fi](https://react-icons.github.io/react-icons/icons/fi/))
 
 ```tsx
 { label: "Posts", icon: <FiFileText />, href: "/posts", mobile: true },
@@ -93,7 +92,7 @@ Pages `Users`, `Analytics`, `Reports`, `Database`, `Security`, `Settings`, `Help
 
 Copy `hooks/GET/useGetUsers.ts`, change the type and the path.
 
-`src/tools/hooks/GET/useGetPosts.ts`
+`src/hooks/GET/useGetPosts.ts`
 
 ```ts
 import { useEffect, useState } from 'react'
@@ -133,7 +132,7 @@ export function useGetPosts() {
 
 ## Send data (POST hook)
 
-`src/tools/hooks/POST/usePostPost.ts`
+`src/hooks/POST/usePostPost.ts`
 
 ```ts
 import { useState } from 'react'

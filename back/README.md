@@ -4,8 +4,10 @@
 backend/
 ├── manage.py
 ├── config/          settings.py, urls.py  (project level, no business code)
-└── apps/
-    └── users/       one folder per app: models, serializers, views, urls, admin
+└── apps/            one folder per app: models, serializers, views, urls, admin
+    ├── users/       Users model + /api/users/ CRUD, `seed` command
+    ├── reports/     Reports model (title, body, created)
+    └── dashboard/   Dashboard model (title, body, created)
 ```
 
 ## Run
@@ -47,6 +49,8 @@ class PostsConfig(AppConfig):
 INSTALLED_APPS = [
     ...
     "apps.users",
+    "apps.reports",
+    "apps.dashboard",
     "apps.posts",
 ]
 ```

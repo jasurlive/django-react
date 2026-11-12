@@ -1,19 +1,19 @@
 import { BrowserRouter, Route, Routes } from 'react-router'
-import '../tools/css/reset.css'
-import '../tools/css/theme.css'
-import '../tools/css/page.css'
-import Layout from '../tools/components/Layout'
-import Home from '../tools/pages/Home'
-import Users from '../tools/pages/Users'
-import Analytics from '../tools/pages/Analytics'
-import Reports from '../tools/pages/Reports'
-import Database from '../tools/pages/Database'
-import Security from '../tools/pages/Security'
-import Settings from '../tools/pages/Settings'
-import Help from '../tools/pages/Help'
-import NotFound from '../tools/pages/NotFound'
+import '../css/reset.css'
+import '../css/theme.css'
+import '../css/page.css'
+import Layout from '../components/Layout'
+import Home from '../pages/Home'
+import Users from '../pages/Users'
+import Analytics from '../pages/Analytics'
+import Reports from '../pages/Reports'
+import Database from '../pages/Database'
+import Security from '../pages/Security'
+import Settings from '../pages/Settings'
+import Help from '../pages/Help'
+import NotFound from '../pages/NotFound'
 
-// add a page: create it in tools/pages, add a <Route> here and an item in Menu.tsx
+// add a page: create it in pages, add a <Route> here and an item in Menu.tsx
 export default function App() {
   return (
     <BrowserRouter>
