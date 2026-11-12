@@ -1,0 +1,10 @@
+[
+  {"model": "blog.tag", "pk": 1, "fields": {"name": "django"}},
+  {"model": "blog.tag", "pk": 2, "fields": {"name": "react"}},
+  {"model": "blog.tag", "pk": 3, "fields": {"name": "tips"}},
+  {"model": "blog.post", "pk": 1, "fields": {"title": "Welcome to the blog", "body": "This post was loaded from a fixture.", "status": "published", "author": null, "tags": [1, 3], "created": "2026-01-10T09:00:00Z", "updated": "2026-01-10T09:00:00Z"}},
+  {"model": "blog.post", "pk": 2, "fields": {"title": "Connecting React to DRF", "body": "Use lib/api.ts on the frontend and a router on the backend.", "status": "published", "author": null, "tags": [1, 2], "created": "2026-01-12T09:00:00Z", "updated": "2026-01-12T09:00:00Z"}},
+  {"model": "blog.post", "pk": 3, "fields": {"title": "A draft nobody sees yet", "body": "Publish it with POST /api/posts/3/publish/.", "status": "draft", "author": null, "tags": [], "created": "2026-01-14T09:00:00Z", "updated": "2026-01-14T09:00:00Z"}},
+  {"model": "blog.comment", "pk": 1, "fields": {"post": 1, "name": "Ann", "body": "Great start!", "created": "2026-01-10T10:00:00Z"}},
+  {"model": "blog.comment", "pk": 2, "fields": {"post": 1, "name": "Bob", "body": "Looking forward to more.", "created": "2026-01-10T11:00:00Z"}}
+]

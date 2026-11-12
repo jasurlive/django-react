@@ -74,3 +74,19 @@
   color: var(--muted);
   font-size: 0.875rem;
 }
+
+/* empty placeholder boxes on the home screen */
+.home-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.home-box {
+  flex: 1 1 180px;
+  min-height: 8rem;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  background: var(--bg-elev);
+}

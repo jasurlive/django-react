@@ -13,6 +13,7 @@ Simple & minimal Telegram bot template using Python, polling, and JSONPlaceholde
 - Media handling
 - Bot reset
 - Announcements
+- Website visitor alerts (`visitor.py`)
 
 ## Requirements
 
@@ -45,6 +46,30 @@ Get your token from [@BotFather](https://t.me/BotFather).
 python bot.py
 ```
 
+## Visitor alerts (`visitor.py`)
+
+Sends every website visit to you on Telegram: page, IP, referrer, language, timezone, screen, browser.
+
+```
+browser --POST /api/visits/--> Django <--POST /api/visits/claim/ every 10s-- visitor.py --> Telegram (ADMIN_ID)
+```
+
+The site reports one visit per browser session (`front/src/lib/trackVisit.ts`). `visitor.py` polls Django, and Django hands out each visit only once.
+
+1. Pick a long random key, e.g. `python -c "import secrets; print(secrets.token_urlsafe(32))"`
+2. Put it in **both** `back/.env` and `bot/.env` as `BOT_API_KEY=...`
+3. In `bot/.env` also set `ADMIN_ID` (your Telegram user id, ask [@userinfobot](https://t.me/userinfobot)) and `API_URL` (default `http://localhost:8000/api`)
+4. Open the bot in Telegram and press Start once (bots can't message you first)
+5. Run Django, then:
+
+```bash
+python visitor.py
+```
+
+It runs separately from `bot.py`; run both if you want both. A visit is marked as sent when it's handed to the bot, so if Telegram is down at that moment, that visit is skipped (check `/admin/` > Visits).
+
+Visitor IPs are personal data: tell your users in a privacy note, and delete old visits from time to time.
+
 ## API (you can use your own api calls)
 
 [JSONPlaceholder](https://jsonplaceholder.typicode.com/users)
@@ -64,7 +89,6 @@ ExecStart=/home/YOURUSERNAME/bot/.venv/bin/python main.py
 
 Restart=always
 Environment="BOT_TOKEN=your_token"
-Restart=always
 Environment="ADMIN_ID=your_id"
 
 [Install]
@@ -78,6 +102,8 @@ sudo systemctl start telegrambot
 ```
 
 you'll also need to run these commands if you make any changes
+
+For visitor alerts make a second service the same way with `ExecStart=.../.venv/bin/python visitor.py` (it reads `bot/.env` from `WorkingDirectory`).
 
 ## License
 

@@ -14,8 +14,9 @@ Django REST backend + React/Vite frontend.
 ```
 back/            Django project
   config/           settings, root urls
-  apps/<name>/      one folder per Django app (users, reports, dashboard)
+  apps/<name>/      one folder per Django app (users, blog, reports, feedback, dashboard, visitors)
 front/           React + TypeScript + Vite
+bot/             Telegram bot (python-telegram-bot) + visitor alerts
 ```
 
 ## Backend
@@ -27,10 +28,13 @@ pip install -r requirements.txt
 cp .env.example .env                                 # set SECRET_KEY
 python manage.py migrate
 python manage.py seed                                # optional: admin user from .env
+python manage.py loaddata blog_demo                  # optional: demo blog posts
 python manage.py runserver                           # http://localhost:8000
 ```
 
-API: `/api/users/` · Admin: `/admin/`
+API: `/api/users/`, `/api/posts/`, `/api/tags/`, `/api/reports/`, `/api/feedback/`, `/api/dashboard/`, `/api/visits/` · Admin: `/admin/`
+
+The backend apps are worked examples of common Django patterns, see [back/README.md](back/README.md#example-apps-learn-by-reading).
 
 ## Frontend
 
@@ -40,6 +44,19 @@ npm install
 cp .env.example .env
 npm run dev                                          # http://localhost:1212
 ```
+
+## Telegram bot
+
+```bash
+cd bot
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env                                 # set BOT_TOKEN, ADMIN_ID, BOT_API_KEY
+python bot.py                                        # the bot itself
+python visitor.py                                    # optional: website visits -> your Telegram
+```
+
+See [bot/README.md](bot/README.md#visitor-alerts-visitorpy) for visitor alerts.
 
 ## Add a Django app
 

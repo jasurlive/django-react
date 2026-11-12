@@ -16,9 +16,13 @@ export class ApiError extends Error {
 type Options = Omit<RequestInit, 'body'> & { body?: unknown }
 
 export async function api<T = unknown>(path: string, { body, headers, ...options }: Options = {}): Promise<T> {
+  const baseUrl = import.meta.env.VITE_API_URL
+  // without this, requests hit the Vite dev server and get index.html back
+  if (!baseUrl) throw new ApiError(0, 'VITE_API_URL is not set (copy .env.example to .env and restart npm run dev)')
+
   const token = localStorage.getItem('token')
 
-  const res = await fetch(`${import.meta.env.VITE_API_URL}${path}`, {
+  const res = await fetch(`${baseUrl}${path}`, {
     ...options,
     headers: {
       ...(body !== undefined && { 'Content-Type': 'application/json' }),

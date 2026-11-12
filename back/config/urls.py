@@ -8,4 +8,9 @@ urlpatterns = [
     path("", RedirectView.as_view(url=settings.FRONTEND_URL)),
     path("admin/", admin.site.urls),
     path("api/", include("apps.users.urls")),
+    path("api/", include("apps.blog.urls")),
+    path("api/", include("apps.reports.urls")),
+    path("api/", include("apps.feedback.urls")),
+    path("api/", include("apps.dashboard.urls")),
+    path("api/", include("apps.visitors.urls")),
 ]
