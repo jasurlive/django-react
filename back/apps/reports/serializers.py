@@ -1,9 +1,9 @@
 from rest_framework import serializers
 
-from .models import Reports
+from .models import Report
 
 
-class PostSerializer(serializers.ModelSerializer):
+class ReportSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Reports
-        fields = "__all__"
+        model = Report
+        fields = ["id", "title", "body", "category", "amount", "created"]

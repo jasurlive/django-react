@@ -9,21 +9,19 @@ import {
   FiBarChart2,
   FiFileText,
   FiDatabase,
-  FiHelpCircle,
+  FiInfo,
   FiShield,
 } from "react-icons/fi";
 import "../css/menu.css";
 import { useTheme } from "../hooks/LOCAL/useTheme";
 import { useShortcuts } from "../hooks/LOCAL/useShortcuts";
-import { THEME_ICONS } from "./ThemeIcons";
-import { THEME_LABELS } from "../lib/themes";
 
 export type MenuItem = {
   label: string;
   icon: ReactNode;
-  href?: string;
-  onClick?: () => void;
+  href: string;
   mobile?: boolean;
+  bottom?: boolean;
 };
 
 export default function Menu({
@@ -39,25 +37,24 @@ export default function Menu({
     { label: "Reports", icon: <FiFileText />, href: "/reports", mobile: true },
     { label: "Database", icon: <FiDatabase />, href: "/database" },
     { label: "Security", icon: <FiShield />, href: "/security" },
+    // bottom: pinned to the bottom of the sidebar on desktop, keep these last
     {
       label: "Settings",
       icon: <FiSettings />,
       href: "/settings",
       mobile: true,
+      bottom: true,
     },
-    { label: "Help", icon: <FiHelpCircle />, href: "/help" },
+    { label: "Info", icon: <FiInfo />, href: "/info", bottom: true },
   ],
 }: {
   items?: MenuItem[];
 }) {
-  const { nextTheme, toggleTheme } = useTheme();
-
-  useShortcuts({ "ctrl+j": toggleTheme });
-
+  const { toggleTheme } = useTheme();
   const [collapsed, setCollapsed] = useState(
     () => localStorage.getItem("menu-collapsed") !== "false"
   );
-  
+
   const toggleMenu = () => {
     setCollapsed((value) => {
       localStorage.setItem("menu-collapsed", String(!value));
@@ -65,16 +62,8 @@ export default function Menu({
     });
   };
 
-  const menuItems: MenuItem[] = [
-    ...items,
-    {
-      // shows the theme you'll switch to (ctrl+j cycles too)
-      label: `${THEME_LABELS[nextTheme]} theme`,
-      icon: THEME_ICONS[nextTheme],
-      onClick: toggleTheme,
-      mobile: true,
-    },
-  ];
+  // global shortcuts, listed on the Info page: keep both in sync
+  useShortcuts({ "ctrl+j": toggleTheme, "`": toggleMenu });
 
   return (
     <nav className={`menu ${collapsed ? "menu-collapsed" : ""}`}>
@@ -82,34 +71,18 @@ export default function Menu({
         type="button"
         className="menu-toggle"
         onClick={toggleMenu}
-        aria-label="Toggle sidebar"
+        aria-label="Toggle sidebar (`)"
+        title="Toggle sidebar (`)"
       >
         {collapsed ? <FiChevronRight /> : <FiChevronLeft />}
       </button>
 
-      {menuItems.map((item) => {
+      {items.map((item) => {
         const className = `menu-item ${
           item.mobile ? "menu-mobile-visible" : "menu-desktop-only"
-        }`;
+        } ${item.bottom ? "menu-bottom" : ""}`;
 
-        const content = (
-          <>
-            <span className="menu-icon">{item.icon}</span>
-            <span className="menu-label">{item.label}</span>
-          </>
-        );
-
-        return item.onClick ? (
-          <button
-            key={item.label}
-            type="button"
-            className={className}
-            onClick={item.onClick}
-            title={item.label}
-          >
-            {content}
-          </button>
-        ) : item.href ? (
+        return (
           // NavLink adds .active on the current page; `end` so "/" isn't active everywhere
           <NavLink
             key={item.href}
@@ -118,9 +91,10 @@ export default function Menu({
             className={className}
             title={item.label}
           >
-            {content}
+            <span className="menu-icon">{item.icon}</span>
+            <span className="menu-label">{item.label}</span>
           </NavLink>
-        ) : null;
+        );
       })}
     </nav>
   );

@@ -20,7 +20,11 @@ export function useGetUsers() {
 
     api
       .get<User[]>('/users/', { signal: controller.signal })
-      .then(setUsers)
+      .then((data) => {
+        // guard: a wrong URL can return HTML or an object instead of a list
+        if (!Array.isArray(data)) throw new Error('expected a list of users, got something else')
+        setUsers(data)
+      })
       .catch((err: Error) => {
         if (err.name !== 'AbortError') setError(err.message)
       })

@@ -17,6 +17,7 @@ ALLOWED_HOSTS = env_list("ALLOWED_HOSTS")
 CORS_ALLOWED_ORIGINS = env_list("CORS_ALLOWED_ORIGINS")
 CSRF_TRUSTED_ORIGINS = env_list("CSRF_TRUSTED_ORIGINS")
 FRONTEND_URL = os.getenv("FRONTEND_URL", "/admin/")
+BOT_API_KEY = os.getenv("BOT_API_KEY", "")  # shared with bot/.env, lets the bot read visits
 
 # add new apps here as "apps.<name>"
 INSTALLED_APPS = [
@@ -28,9 +29,12 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "corsheaders",
-    "apps.users",
-    "apps.reports",
-    "apps.dashboard",
+    "apps.users",  # CRUD with a ModelViewSet
+    "apps.blog",  # relations, nested data, custom actions, tests
+    "apps.reports",  # generic views, search, ordering, pagination
+    "apps.feedback",  # function views, validation, rate limiting
+    "apps.dashboard",  # no models: aggregates numbers from the others
+    "apps.visitors",  # custom permission, polled by the Telegram bot
 ]
 
 MIDDLEWARE = [

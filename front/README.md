@@ -7,14 +7,30 @@ src/
 ├── app/                entry: main.tsx, App.tsx (routes), env.d.ts
 ├── pages/              one file per route
 ├── components/         Layout, Header, ErrorBoundary
-├── shared/             Menu (sidebar / mobile bar)
+├── shared/             Menu (sidebar / mobile bar), States (loading/empty/error)
 ├── hooks/
-│   ├── GET/            data fetching hooks
+│   ├── GET/            data fetching hooks (useGetDemo = fake demo data)
 │   ├── POST/           data sending hooks
 │   └── LOCAL/          browser-only hooks (theme, shortcuts)
 ├── lib/api.ts          fetch wrapper (base URL, JSON, errors)
-└── css/                reset, page, menu, home
+├── lib/trackVisit.ts   reports one visit per session to Django (Telegram alerts)
+└── css/                reset, page, ui (tables, cards, lists), menu, home
 ```
+
+## Demo pages
+
+The stub pages show fake data from [jsonplaceholder](https://jsonplaceholder.typicode.com) through `hooks/GET/useGetDemo.ts`, so you can see how a page looks when it has data. Each page shows a different case:
+
+| Page | Case |
+| --- | --- |
+| Home | empty boxes + simple user list |
+| Users | table |
+| Reports | card grid |
+| Analytics | stat tiles + bar chart |
+| Database | filter tabs + pagination + empty filter |
+| Security | timeline feed, empty section, failing request with retry |
+
+Every page also shows a loading skeleton and an error box (`shared/States.tsx`). To make a page real, swap `useGetDemo` for a hook built on `lib/api.ts` (like `useGetUsers`). When no page uses `useGetDemo` any more, delete it.
 
 ## Run
 
@@ -34,6 +50,8 @@ Needs Node 20.19+ or 22.12+.
 | `npm run lint` | oxlint |
 
 ## Connect to Django
+
+The template runs on demo data, so the backend isn't needed to try it. When you're ready, point it at Django:
 
 `.env`
 
@@ -86,7 +104,7 @@ import Posts from '../pages/Posts'
 { label: "Posts", icon: <FiFileText />, href: "/posts", mobile: true },
 ```
 
-Pages `Users`, `Analytics`, `Reports`, `Database`, `Security`, `Settings`, `Help` are empty stubs. Replace them the same way. Delete the ones you don't need (file, route, menu item).
+Pages `Users`, `Analytics`, `Reports`, `Database`, `Security` show demo data (see above), `Settings` has the theme picker and fullscreen toggle, `Info` lists shortcuts, usage tips and the footer links. Replace them the same way. Delete the ones you don't need (file, route, menu item).
 
 ## Fetch data (GET hook)
 
@@ -191,8 +209,11 @@ PUT, PATCH, DELETE: `api.put`, `api.patch`, `api.delete` work the same way (see 
 
 ## Built-in helpers
 
-- Theme toggle: `Ctrl+J` or the menu button (`hooks/LOCAL/useTheme.ts`)
-- Shortcuts: `useShortcuts({ "ctrl+k": () => ... })` (`hooks/LOCAL/useShortcuts.ts`)
+- Theme: pick it in Settings, or `Ctrl+J` cycles themes (`hooks/LOCAL/useTheme.ts`)
+- Sidebar: `` ` `` (backtick) collapses or expands it
+- Fullscreen: toggle in Settings (`hooks/LOCAL/useFullscreen.ts`)
+- Shortcuts: `useShortcuts({ "ctrl+k": () => ... })` (`hooks/LOCAL/useShortcuts.ts`). Global ones live in `shared/Menu.tsx`; list new ones on the Info page
+- Visit tracking: `lib/trackVisit.ts` runs once in `app/main.tsx`; the bot sends visits to Telegram. Remove that line to turn it off
 - Error handling: `ErrorBoundary` wraps every page, so one broken page doesn't blank the app
 
 ## Reference links

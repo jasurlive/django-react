@@ -1,0 +1,360 @@
+/* data building blocks used by the template pages: tables, cards, lists, states */
+
+.page-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.ui-muted {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.ui-grow {
+  flex: 1;
+  min-width: 0;
+}
+
+.ui-badge {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ---------- states ---------- */
+
+.ui-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.ui-skeleton-bar {
+  display: block;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--hover) 25%, var(--surface) 50%, var(--hover) 75%);
+  background-size: 200% 100%;
+  animation: ui-shimmer 1.2s ease-in-out infinite;
+}
+
+.ui-skeleton-bar:last-child:not(:first-child) {
+  width: 60%;
+}
+
+@keyframes ui-shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-skeleton-bar { animation: none; }
+}
+
+.ui-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2rem 1rem;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.ui-state-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: var(--muted);
+}
+
+.ui-state-title {
+  font-weight: 600;
+  color: var(--text-strong);
+}
+
+.ui-state-error {
+  border-style: solid;
+  border-color: var(--danger);
+}
+
+.ui-state-error .ui-state-icon {
+  color: var(--danger);
+}
+
+/* ---------- card ---------- */
+
+.ui-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-elev);
+}
+
+.ui-card > .ui-badge {
+  align-self: flex-start;
+}
+
+.ui-card-title {
+  font-weight: 600;
+  color: var(--text-strong);
+  text-transform: capitalize;
+}
+
+.ui-card-text {
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.ui-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.75rem;
+}
+
+/* ---------- table ---------- */
+
+.ui-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-elev);
+}
+
+.ui-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.ui-table th,
+.ui-table td {
+  padding: 0.65rem 1rem;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--border);
+}
+
+.ui-table th {
+  color: var(--muted);
+  font-weight: 500;
+  background: var(--surface);
+}
+
+.ui-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.ui-table tbody tr:hover {
+  background: var(--hover);
+}
+
+.ui-avatar {
+  display: inline-grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-right: 0.6rem;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+/* ---------- stats + bar chart ---------- */
+
+.ui-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+
+.ui-stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
+.ui-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ui-bar-row {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr 2rem;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ui-bar-track {
+  height: 0.6rem;
+  border-radius: 999px;
+  background: var(--hover);
+  overflow: hidden;
+}
+
+.ui-bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+}
+
+.ui-bar-value {
+  text-align: right;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- tabs, list, pager ---------- */
+
+.ui-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.ui-tabs .page-button {
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.page-button.is-active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.page-button:disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.ui-list {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-elev);
+}
+
+.ui-list-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.875rem;
+}
+
+.ui-list-item:last-child {
+  border-bottom: none;
+}
+
+.ui-dot {
+  flex-shrink: 0;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  border: 2px solid var(--muted);
+}
+
+.ui-dot.is-done {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.ui-pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* ---------- two columns, feed ---------- */
+
+.ui-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 0 1.5rem;
+}
+
+.ui-columns .page-subtitle:first-child {
+  margin-top: 0;
+}
+
+.ui-feed {
+  display: flex;
+  flex-direction: column;
+  border-left: 2px solid var(--border);
+  margin-left: 0.4rem;
+}
+
+.ui-feed-item {
+  position: relative;
+  padding: 0 0 1rem 1.25rem;
+}
+
+.ui-feed-item::before {
+  content: '';
+  position: absolute;
+  left: -0.4rem;
+  top: 0.35rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+}
+
+.ui-feed-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---------- search + accordion ---------- */
+
+.ui-input {
+  width: 100%;
+  max-width: 28rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-elev);
+  color: var(--text);
+  font: inherit;
+}
+
+.ui-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.ui-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ui-accordion summary {
+  cursor: pointer;
+}

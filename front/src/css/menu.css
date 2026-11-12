@@ -107,6 +107,11 @@
     flex-shrink: 0;
   }
 
+  /* first .menu-bottom item pushes itself and the rest to the bottom */
+  .menu-item:not(.menu-bottom) + .menu-bottom {
+    margin-top: auto;
+  }
+
   .menu-item.active {
     background: color-mix(in srgb, var(--accent) 10%, transparent);
     box-shadow: none;
