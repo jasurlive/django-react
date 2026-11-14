@@ -8,7 +8,7 @@ const TIPS = [
   "The arrow at the top of the sidebar (or the ` key) collapses or expands it. Your choice is remembered.",
   "Pick a theme in Settings. It's saved in this browser.",
   "Settings also has a fullscreen button. Press Esc to leave fullscreen.",
-  "On phones the menu is a bar at the bottom with the main pages. The rest are on desktop.",
+  "On phones the menu is a bar at the bottom with the main pages. One slot rotates through extra pages: swipe it up or down to flip. The rest are on desktop.",
   "If a page breaks, it shows an error box. Reloading the page usually fixes it.",
 ];
 
