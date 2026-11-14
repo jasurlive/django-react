@@ -11,6 +11,10 @@
 Ready to build Fullstack Template
 Django REST backend + React/Vite frontend.
 
+<img width="60%" alt="image" src="https://github.com/user-attachments/assets/e626e48c-04ab-4bb2-ada0-0588dc80a63b" />
+<img width="30%" alt="image" src="https://github.com/user-attachments/assets/10a0311f-abca-4eb4-ab02-32677037fb40" />
+
+
 ```
 back/            Django project
   config/           settings, root urls
