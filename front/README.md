@@ -104,6 +104,8 @@ import Posts from '../pages/Posts'
 { label: "Posts", icon: <FiFileText />, href: "/posts", mobile: true },
 ```
 
+Item options: `mobile` shows it in the phone bar, `bottom` pins it to the bottom of the desktop sidebar, `flip` puts it in the phone bar's rotating slot. All `flip` items share that one slot: it rolls to the next one every 5s, holds while you're on one of them, and can be swiped up/down. The logic lives in `hooks/LOCAL/useFlipMenu.ts`, so adding a page to the slot is just `flip: true` (keep flip items next to each other in the list).
+
 Pages `Users`, `Analytics`, `Reports`, `Database`, `Security` show demo data (see above), `Settings` has the theme picker and fullscreen toggle, `Info` lists shortcuts, usage tips and the footer links. Replace them the same way. Delete the ones you don't need (file, route, menu item).
 
 ## Fetch data (GET hook)

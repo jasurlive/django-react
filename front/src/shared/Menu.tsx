@@ -15,42 +15,31 @@ import {
 import "../css/menu.css";
 import { useTheme } from "../hooks/LOCAL/useTheme";
 import { useShortcuts } from "../hooks/LOCAL/useShortcuts";
+import { useFlipMenu } from "../hooks/LOCAL/useFlipMenu";
 
 export type MenuItem = {
   label: string;
   icon: ReactNode;
   href: string;
-  mobile?: boolean;
-  bottom?: boolean;
+  mobile?: boolean; // shown in the phone bar
+  flip?: boolean; // phones: flip items share one rotating slot (see useFlipMenu), keep them next to each other
+  bottom?: boolean; // pinned to the bottom of the sidebar on desktop, keep these last
 };
 
-export default function Menu({
-  items = [
-    { label: "Home", icon: <FiHome />, href: "/", mobile: true },
-    { label: "Users", icon: <FiUsers />, href: "/users", mobile: true },
-    {
-      label: "Analytics",
-      icon: <FiBarChart2 />,
-      href: "/analytics",
-      mobile: true,
-    },
-    { label: "Reports", icon: <FiFileText />, href: "/reports", mobile: true },
-    { label: "Database", icon: <FiDatabase />, href: "/database" },
-    { label: "Security", icon: <FiShield />, href: "/security" },
-    // bottom: pinned to the bottom of the sidebar on desktop, keep these last
-    {
-      label: "Settings",
-      icon: <FiSettings />,
-      href: "/settings",
-      mobile: true,
-      bottom: true,
-    },
-    { label: "Info", icon: <FiInfo />, href: "/info", bottom: true },
-  ],
-}: {
-  items?: MenuItem[];
-}) {
+const ITEMS: MenuItem[] = [
+  { label: "Home", icon: <FiHome />, href: "/", mobile: true },
+  { label: "Users", icon: <FiUsers />, href: "/users", mobile: true },
+  { label: "Analytics", icon: <FiBarChart2 />, href: "/analytics", mobile: true },
+  { label: "Reports", icon: <FiFileText />, href: "/reports", mobile: true },
+  { label: "Database", icon: <FiDatabase />, href: "/database", flip: true },
+  { label: "Security", icon: <FiShield />, href: "/security", flip: true },
+  { label: "Settings", icon: <FiSettings />, href: "/settings", mobile: true, bottom: true },
+  { label: "Info", icon: <FiInfo />, href: "/info", bottom: true },
+];
+
+export default function Menu({ items = ITEMS }: { items?: MenuItem[] }) {
   const { toggleTheme } = useTheme();
+  const flip = useFlipMenu(items.filter((i) => i.flip).map((i) => i.href));
   const [collapsed, setCollapsed] = useState(
     () => localStorage.getItem("menu-collapsed") !== "false"
   );
@@ -78,9 +67,15 @@ export default function Menu({
       </button>
 
       {items.map((item) => {
-        const className = `menu-item ${
-          item.mobile ? "menu-mobile-visible" : "menu-desktop-only"
-        } ${item.bottom ? "menu-bottom" : ""}`;
+        const mobile = item.flip ? flip.isShowing(item.href) : item.mobile;
+        const className = [
+          "menu-item",
+          mobile ? "menu-mobile-visible" : "menu-desktop-only",
+          item.flip && flip.className,
+          item.bottom && "menu-bottom",
+        ]
+          .filter(Boolean)
+          .join(" ");
 
         return (
           // NavLink adds .active on the current page; `end` so "/" isn't active everywhere
@@ -90,6 +85,7 @@ export default function Menu({
             end={item.href === "/"}
             className={className}
             title={item.label}
+            {...(item.flip && flip.bind(item.href))}
           >
             <span className="menu-icon">{item.icon}</span>
             <span className="menu-label">{item.label}</span>
