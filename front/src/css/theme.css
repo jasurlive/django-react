@@ -1,39 +1,41 @@
 /* ---------- theme tokens ---------- */
-/* set via <html data-theme="light|dark|linen|fjord|matte|charcoal|paper"> (see lib/themes.ts, useTheme + index.html) */
+/* set via <html data-theme="light|linen|matte|sage|dark|hygge|spruce|fjord"> (see lib/themes.ts, useTheme + index.html) */
 
 :root,
 :root[data-theme='light'] {
+  /* birch: soft snowy white, light-wood surfaces, dusty blue accent */
   color-scheme: light;
-  --bg: #eef2f7;
-  --bg-elev: #ffffff;
-  --surface: #f3f6fb;
-  --text: #1f2937;
-  --text-strong: #0f172a;
-  --muted: #5b6475;
-  --border: rgba(15, 23, 42, 0.12);
-  --hover: rgba(15, 23, 42, 0.05);
-  --accent: #2563eb;
-  --accent-hover: #1d4ed8;
-  --accent-soft: rgba(37, 99, 235, 0.1);
-  --danger: #dc2626;
-  --shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+  --bg: #f3f2ef;
+  --bg-elev: #fbfaf8;
+  --surface: #ebe9e4;
+  --text: #34383c;
+  --text-strong: #1f2326;
+  --muted: #73777b;
+  --border: rgba(52, 56, 60, 0.11);
+  --hover: rgba(52, 56, 60, 0.05);
+  --accent: #5d7a91;
+  --accent-hover: #4b667b;
+  --accent-soft: rgba(93, 122, 145, 0.12);
+  --danger: #b4534b;
+  --shadow: 0 6px 20px rgba(52, 56, 60, 0.06);
 }
 
 :root[data-theme='dark'] {
+  /* charcoal: neutral matte grey, soft grey accent */
   color-scheme: dark;
-  --bg: #080e1a;
-  --bg-elev: #0d1526;
-  --surface: #1a1e3c;
-  --text: #d1d5db;
-  --text-strong: #f1f5f9;
-  --muted: #9ca3af;
-  --border: rgba(255, 255, 255, 0.1);
-  --hover: rgba(255, 255, 255, 0.07);
-  --accent: #3b82f6;
-  --accent-hover: #2563eb;
-  --accent-soft: rgba(59, 130, 246, 0.14);
-  --danger: #f87171;
-  --shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  --bg: #181818;
+  --bg-elev: #202020;
+  --surface: #292929;
+  --text: #d4d4d4;
+  --text-strong: #f5f5f5;
+  --muted: #999999;
+  --border: rgba(255, 255, 255, 0.09);
+  --hover: rgba(255, 255, 255, 0.06);
+  --accent: #a3a3a3;
+  --accent-hover: #d4d4d4;
+  --accent-soft: rgba(163, 163, 163, 0.12);
+  --danger: #ef7777;
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 /* ---------- extra themes: calm scandinavian palettes ---------- */
@@ -57,24 +59,6 @@
   --shadow: 0 6px 20px rgba(58, 56, 53, 0.06);
 }
 
-/* cool misty grey, muted slate-blue accent */
-:root[data-theme='fjord'] {
-  color-scheme: light;
-  --bg: #eef1f3;
-  --bg-elev: #f8fafb;
-  --surface: #e4e9ec;
-  --text: #2f3a42;
-  --text-strong: #1c252c;
-  --muted: #6b7781;
-  --border: rgba(47, 58, 66, 0.12);
-  --hover: rgba(47, 58, 66, 0.05);
-  --accent: #4f6d7a;
-  --accent-hover: #3f5a66;
-  --accent-soft: rgba(79, 109, 122, 0.12);
-  --danger: #b0504a;
-  --shadow: 0 6px 20px rgba(47, 58, 66, 0.06);
-}
-
 /* matte: soft stone grey, low-glare, muted clay accent */
 :root[data-theme='matte'] {
   color-scheme: light;
@@ -93,38 +77,74 @@
   --shadow: 0 6px 20px rgba(59, 57, 54, 0.05);
 }
 
-/* charcoal dark */
-:root[data-theme='charcoal'] {
-  color-scheme: dark;
-  --bg: #181818;
-  --bg-elev: #202020;
-  --surface: #292929;
-  --text: #d4d4d4;
-  --text-strong: #f5f5f5;
-  --muted: #999999;
-  --border: rgba(255, 255, 255, 0.09);
-  --hover: rgba(255, 255, 255, 0.06);
-  --accent: #a3a3a3;
-  --accent-hover: #d4d4d4;
-  --accent-soft: rgba(163, 163, 163, 0.12);
-  --danger: #ef7777;
-  --shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+/* sage: soft oat white, muted sage-green accent, like dried eucalyptus */
+:root[data-theme='sage'] {
+  color-scheme: light;
+  --bg: #f1f1ec;
+  --bg-elev: #f9f9f5;
+  --surface: #e7e8e1;
+  --text: #353a35;
+  --text-strong: #212521;
+  --muted: #737a72;
+  --border: rgba(53, 58, 53, 0.11);
+  --hover: rgba(53, 58, 53, 0.05);
+  --accent: #6f8a6f;
+  --accent-hover: #5c745c;
+  --accent-soft: rgba(111, 138, 111, 0.12);
+  --danger: #b0504a;
+  --shadow: 0 6px 20px rgba(53, 58, 53, 0.06);
 }
 
-/* paper: monochrome off-white, black ink accent (light twin of charcoal) */
-:root[data-theme='paper'] {
-  color-scheme: light;
-  --bg: #fafafa;
-  --bg-elev: #ffffff;
-  --surface: #f4f4f4;
-  --text: #111111;
-  --text-strong: #000000;
-  --muted: #6b6b6b;
-  --border: #e4e4e4;
-  --hover: rgba(17, 17, 17, 0.05);
-  --accent: #111111;
-  --accent-hover: #333333;
-  --accent-soft: rgba(17, 17, 17, 0.07);
-  --danger: #c0392b;
-  --shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+/* hygge: scandinavian dark, matte slate walls, linen text, smoked-oak accent */
+:root[data-theme='hygge'] {
+  color-scheme: dark;
+  --bg: #1d2023;
+  --bg-elev: #23272a;
+  --surface: #2a2e32;
+  --text: #d6d0c6;
+  --text-strong: #eee9e1;
+  --muted: #8f8a82;
+  --border: rgba(230, 221, 208, 0.09);
+  --hover: rgba(230, 221, 208, 0.05);
+  --accent: #c4a57c;
+  --accent-hover: #d6bc98;
+  --accent-soft: rgba(196, 165, 124, 0.12);
+  --danger: #d08a80;
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* spruce: nordic forest at dusk, deep pine-grey, soft moss accent */
+:root[data-theme='spruce'] {
+  color-scheme: dark;
+  --bg: #1a1f1d;
+  --bg-elev: #202624;
+  --surface: #27302c;
+  --text: #cfd5cd;
+  --text-strong: #e9eee6;
+  --muted: #869087;
+  --border: rgba(207, 222, 205, 0.09);
+  --hover: rgba(207, 222, 205, 0.05);
+  --accent: #9db59a;
+  --accent-hover: #b6cbb3;
+  --accent-soft: rgba(157, 181, 154, 0.12);
+  --danger: #d08a80;
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* fjord: nordic fjord at night, deep slate-blue water, misty blue accent */
+:root[data-theme='fjord'] {
+  color-scheme: dark;
+  --bg: #191e24;
+  --bg-elev: #1f252c;
+  --surface: #262d35;
+  --text: #cdd4dc;
+  --text-strong: #e8edf2;
+  --muted: #858f9a;
+  --border: rgba(200, 214, 228, 0.09);
+  --hover: rgba(200, 214, 228, 0.05);
+  --accent: #93abc2;
+  --accent-hover: #afc3d6;
+  --accent-soft: rgba(147, 171, 194, 0.12);
+  --danger: #d08a80;
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 }

@@ -9,7 +9,6 @@ import {
   FiBarChart2,
   FiFileText,
   FiDatabase,
-  FiInfo,
   FiShield,
 } from "react-icons/fi";
 import "../css/menu.css";
@@ -29,12 +28,11 @@ export type MenuItem = {
 const ITEMS: MenuItem[] = [
   { label: "Home", icon: <FiHome />, href: "/", mobile: true },
   { label: "Users", icon: <FiUsers />, href: "/users", mobile: true },
-  { label: "Analytics", icon: <FiBarChart2 />, href: "/analytics", mobile: true },
+  { label: "Analytics", icon: <FiBarChart2 />, href: "/analytics", mobile: false },
   { label: "Reports", icon: <FiFileText />, href: "/reports", mobile: true },
   { label: "Database", icon: <FiDatabase />, href: "/database", flip: true },
   { label: "Security", icon: <FiShield />, href: "/security", flip: true },
   { label: "Settings", icon: <FiSettings />, href: "/settings", mobile: true, bottom: true },
-  { label: "Info", icon: <FiInfo />, href: "/info", bottom: true },
 ];
 
 export default function Menu({ items = ITEMS }: { items?: MenuItem[] }) {
@@ -51,7 +49,7 @@ export default function Menu({ items = ITEMS }: { items?: MenuItem[] }) {
     });
   };
 
-  // global shortcuts, listed on the Info page: keep both in sync
+  // global shortcuts, listed on the Settings page: keep both in sync
   useShortcuts({ "ctrl+j": toggleTheme, "`": toggleMenu });
 
   return (
