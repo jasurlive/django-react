@@ -1,5 +1,5 @@
 /* ---------- theme tokens ---------- */
-/* set via <html data-theme="light|dark|linen|fjord|matte|charcoal|paper"> (see lib/themes.ts, useTheme + index.html) */
+/* set via <html data-theme="light|dark|linen|fjord|matte|charcoal|paper|hygge"> (see lib/themes.ts, useTheme + index.html) */
 
 :root,
 :root[data-theme='light'] {
@@ -20,20 +20,21 @@
 }
 
 :root[data-theme='dark'] {
+  /* soft Tokyo Night Moon, same palette as hyprminimal (colors/palette.css) */
   color-scheme: dark;
-  --bg: #080e1a;
-  --bg-elev: #0d1526;
-  --surface: #1a1e3c;
-  --text: #d1d5db;
-  --text-strong: #f1f5f9;
-  --muted: #9ca3af;
-  --border: rgba(255, 255, 255, 0.1);
-  --hover: rgba(255, 255, 255, 0.07);
-  --accent: #3b82f6;
-  --accent-hover: #2563eb;
-  --accent-soft: rgba(59, 130, 246, 0.14);
-  --danger: #f87171;
-  --shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  --bg: #1f2335;
+  --bg-elev: #24283b;
+  --surface: #2c314a;
+  --text: #a9b1d6;
+  --text-strong: #c0caf5;
+  --muted: #737aa2;
+  --border: rgba(122, 136, 207, 0.16);
+  --hover: rgba(169, 177, 214, 0.06);
+  --accent: #7a88cf;
+  --accent-hover: #8ea4c8;
+  --accent-soft: rgba(122, 136, 207, 0.14);
+  --danger: #f7768e;
+  --shadow: 0 6px 20px rgba(24, 27, 42, 0.45);
 }
 
 /* ---------- extra themes: calm scandinavian palettes ---------- */
@@ -127,4 +128,22 @@
   --accent-soft: rgba(17, 17, 17, 0.07);
   --danger: #c0392b;
   --shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* hygge: scandinavian dark, matte slate walls, linen text, smoked-oak accent */
+:root[data-theme='hygge'] {
+  color-scheme: dark;
+  --bg: #1d2023;
+  --bg-elev: #23272a;
+  --surface: #2a2e32;
+  --text: #d6d0c6;
+  --text-strong: #eee9e1;
+  --muted: #8f8a82;
+  --border: rgba(230, 221, 208, 0.09);
+  --hover: rgba(230, 221, 208, 0.05);
+  --accent: #c4a57c;
+  --accent-hover: #d6bc98;
+  --accent-soft: rgba(196, 165, 124, 0.12);
+  --danger: #d08a80;
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 }
