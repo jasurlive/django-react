@@ -1,7 +1,7 @@
 import { FiMaximize, FiMinimize } from "react-icons/fi";
 import { useTheme } from "../hooks/LOCAL/useTheme";
 import { useFullscreen } from "../hooks/LOCAL/useFullscreen";
-import { THEME_LABELS } from "../lib/themes";
+import { THEME_LABELS, isDarkTheme } from "../lib/themes";
 import { THEME_ICONS } from "../shared/ThemeIcons";
 
 // how to use the app: keep this in sync when you add shortcuts (see Menu.tsx) or features
@@ -27,19 +27,28 @@ export default function Settings() {
       <h1 className="page-title">Settings</h1>
 
       <h2 className="page-subtitle">Theme</h2>
-      <div className="theme-picker" role="radiogroup" aria-label="Theme">
-        {themes.map((t) => (
-          <button
-            key={t}
-            type="button"
-            role="radio"
-            aria-checked={t === theme}
-            className={`page-button theme-option ${t === theme ? "is-active" : ""}`}
-            onClick={() => setTheme(t)}
-          >
-            {THEME_ICONS[t]}
-            {THEME_LABELS[t]}
-          </button>
+      {/* light themes on the left, dark on the right */}
+      <div className="theme-columns" role="radiogroup" aria-label="Theme">
+        {[
+          { label: "Light", list: themes.filter((t) => !isDarkTheme(t)) },
+          { label: "Dark", list: themes.filter(isDarkTheme) },
+        ].map((col) => (
+          <div key={col.label} className="theme-picker">
+            <span className="theme-column-label">{col.label}</span>
+            {col.list.map((t) => (
+              <button
+                key={t}
+                type="button"
+                role="radio"
+                aria-checked={t === theme}
+                className={`page-button theme-option ${t === theme ? "is-active" : ""}`}
+                onClick={() => setTheme(t)}
+              >
+                {THEME_ICONS[t]}
+                {THEME_LABELS[t]}
+              </button>
+            ))}
+          </div>
         ))}
       </div>
 
